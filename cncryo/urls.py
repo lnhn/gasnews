@@ -20,5 +20,5 @@ from gasnews import views as gview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',gview.index),
-    path('add/<int:a>/<int:b>/',gview.add2,name='add2'),
+    path('detail/<int:id>',gview.news_detail),
 ]
