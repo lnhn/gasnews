@@ -329,6 +329,7 @@ def collect_china_hydrogen_news():
 
 # Itm Power
 #web="http://www.itm-power.com/news-media/news"
+#https://blog.ballard.com/
 
 # Ballard
 

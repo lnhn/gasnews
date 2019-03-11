@@ -20,7 +20,7 @@ def google_translate():
                 print(sentence.text)
                 try:
                     zh=client.translate(str(sentence.text),'zh-cn')['translatedText']
-                    article=article+zh+"\n"
+                    article=article+zh+"<br>"
                     print(zh)
                 except:
                     pass
@@ -31,7 +31,8 @@ def google_translate():
                 pub=item.pub,
                 text=article,
                 source=item.source,
-                comment=item.comment )
+                comment=item.comment,
+                add_date=item.add_date, )
             tn.save()
             News.update({News.lang:"en-zh"}).where(News.id==item.id).execute()
     db.close()

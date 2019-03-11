@@ -1,10 +1,9 @@
 from urllib.request import quote, unquote
 from gasnews.data import *
+from gasnews.model import *
 
 # 从百度新闻中爬每天的新闻
-key_words = ['氢气', '氢', '氧气', '氧', '氮气', '氮', '氩', '氩气', '氦', '氦', '二氧化碳', '稀有气体', '工业气体', '气体', '林德', '液化空气',
-             '特气', '普莱克斯', '空气化工产品', '大阳日酸', '岩谷气体', '杭氧', '空分','LNG','液化天然气','煤气化','盈德','空分','空气分离']
-
+key_words = SearchWords.select()
 
 def collect_baidu_news():
     web_list = []
@@ -12,9 +11,10 @@ def collect_baidu_news():
 
     #http://news.baidu.com/ns?word=%E6%B0%A2&tn=news&from=news&cl=2&rn=20&ct=1
 
-    for word in key_words:
+    for w in key_words:
         for i in range(1):
-            web_list.append(quote('http://news.baidu.com/ns?word=' + word + '&pn='+str(i*10)+'&cl=2&ct=1&tn=news&ie=utf-8&bt=0&et=0', safe=";/?:@&=+$,", encoding="utf-8"))
+            #print(w.word)
+            web_list.append(quote('http://news.baidu.com/ns?word=' + w.word + '&pn='+str(i*10)+'&cl=2&ct=1&tn=news&ie=utf-8&bt=0&et=0', safe=";/?:@&=+$,", encoding="utf-8"))
 
             #web_list.append(quote('http://news.baidu.com/ns?word=' + word + '&bs=%D1%F5%C6%F8&sr=0&cl=2&rn=' + str(
             #    i * 20) + '&tn=news&ct=0&clk=sortbytime', safe=";/?:@&=+$,", encoding="utf-8"))
@@ -93,8 +93,4 @@ def collect_ccin_news_2():
 
     news_detail=get_articles(story,tag="div",class_="news-content",source="中化新网",lang="zh")
     return news_detail
-
-
-
-
 

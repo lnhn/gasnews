@@ -22,4 +22,6 @@ urlpatterns = [
     path('',gview.index),
     path('detail/<int:id>',gview.news_detail),
     path('trans/<int:id>',gview.trans_news_detail),
+    path('delete/<int:id>',gview.delete_news,name="delete_news"),
+    path('deletebaidu/<int:id>',gview.delete_baidu_news,name="delete_baidu"),
 ]
