@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>daily</title>
+</head>
+<body>
+
+<p>今天是{{year}}年{{month}}月{{day}}日，气界资讯GasSpace送您10条新闻，带给您美好的一天:-)</p>
+
+{% for item in news%}
+<p> {{ forloop.counter}}.{{ item }}</p>
+{%endfor%}
+<p>名言警句：{{his}}</p>
+<p>历史上的今天：{{dic}}</p>
+
+</body>
+</html>

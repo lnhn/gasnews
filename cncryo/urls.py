@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from gasnews import views as gview
+from daily import views as dview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('trans/<int:id>',gview.trans_news_detail),
     path('delete/<int:id>',gview.delete_news,name="delete_news"),
     path('deletebaidu/<int:id>',gview.delete_baidu_news,name="delete_baidu"),
+    path('daily/',dview.daily_viwe,name='get_daily')
 ]
