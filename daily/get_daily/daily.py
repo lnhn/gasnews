@@ -8,8 +8,8 @@ app_key = "1112e262c63493e23660c2ccc27482f9"
 def get_daily_news():
 
         keywords = ["social","caijing", "ai",  "it",
-                "vr",  "qiwen", "guonei","health", "world", "travel", "mobile",
-                "apple", "startup", "keji",  "tiyu", "huabian",
+                "vr",  "guonei","world", "mobile",
+                "apple", "startup", "keji",  
                   ]
 
         base_web="http://api.tianapi.com/"
@@ -24,14 +24,14 @@ def get_daily_news():
                 for news in result['newslist']:
                         news_list.append(news['title'])
 
-        news_result=random.sample(news_list,10)
+        news_result=random.sample(news_list,12)
 
 
         eng="http://api.tianapi.com/txapi/ensentence/?key="+app_key
 
         eng_one=json.loads(urllib.request.urlopen(eng).read().decode())
 
-        eng_one=eng_one["newslist"][0]['en'] +"**"+eng_one["newslist"][0]['zh']
+        eng_one=eng_one["newslist"][0]['en'] +"  "+eng_one["newslist"][0]['zh']
 
         dics=[]
 
@@ -54,7 +54,7 @@ def get_daily_news():
 
         for item in history['newslist']:
                 #print(item)
-                his.append(item['title']+"  "+item['lsdate'])
+                his.append(item['lsdate']+", "+item['title'])
 
         histtory_news=random.sample(his,1)
 
@@ -67,5 +67,5 @@ def get_daily_news():
         print("历史上的今天："+histtory_news[0])
         print("名言:"+dictum_news[0])
 
-        return news_result,histtory_news[0],dictum_news[0]
+        return news_result,histtory_news[0],dictum_news[0],eng_one
 

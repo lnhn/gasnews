@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>daily</title>
+    <title>每日晨报</title>
 </head>
 <body>
 
-<p>今天是{{year}}年{{month}}月{{day}}日，气界资讯GasSpace送您10条新闻，带给您美好的一天:-)</p>
-
+今天是{{year}}年{{month}}月{{day}}日，送来新闻早报，带给您美好的一天:-)<br>
+<br>
 {% for item in news%}
-<p> {{ forloop.counter}}.{{ item }}</p>
+ {{ forloop.counter}}.&nbsp;{{ item }}<br>
 {%endfor%}
-<p>名言警句：{{his}}</p>
-<p>历史上的今天：{{dic}}</p>
+<br>
+名言警句：{{his}}<br>
+历史上的今天：{{dic}}<br>
+每日一句英文:{{eng}}
 
 </body>
 </html>
